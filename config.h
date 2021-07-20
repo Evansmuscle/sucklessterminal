@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-static int borderpx = 2;
+static char *font = "Consolas:pixelsize=13:antialias=true:autohint=true";
+static int borderpx = 1;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -26,7 +26,7 @@ char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 char *vtiden = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
-static float cwscale = 1.0;
+static float cwscale = 1.1;
 static float chscale = 1.0;
 
 /*
@@ -91,35 +91,38 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 8;
+unsigned int tabspaces = 2;
+
+/* bg opacity */
+float alpha = 0.8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-
-  /* 8 normal colors */
-  [0] = "#000000", /* black   */
-  [1] = "#ff5555", /* red     */
-  [2] = "#50fa7b", /* green   */
-  [3] = "#f1fa8c", /* yellow  */
-  [4] = "#bd93f9", /* blue    */
-  [5] = "#ff79c6", /* magenta */
-  [6] = "#8be9fd", /* cyan    */
-  [7] = "#bbbbbb", /* white   */
-
-  /* 8 bright colors */
-  [8]  = "#44475a", /* black   */
-  [9]  = "#ff5555", /* red     */
-  [10] = "#50fa7b", /* green   */
-  [11] = "#f1fa8c", /* yellow  */
-  [12] = "#bd93f9", /* blue    */
-  [13] = "#ff79c6", /* magenta */
-  [14] = "#8be9fd", /* cyan    */
-  [15] = "#ffffff", /* white   */
-
-  /* special colors */
-  [256] = "#282a36", /* background */
-  [257] = "#f8f8f2", /* foreground */
+          /* 8 normal colors */
+      [0] = "#000000", /* black   */
+      [1] = "#ff5555", /* red     */
+      [2] = "#50fa7b", /* green   */
+      [3] = "#f1fa8c", /* yellow  */
+      [4] = "#bd93f9", /* blue    */
+      [5] = "#ff79c6", /* magenta */
+      [6] = "#8be9fd", /* cyan    */
+      [7] = "#bbbbbb", /* white   */
+    
+          /* 8 bright colors */
+     [8]  = "#44475a", /* black   */
+     [9]  = "#ff5555", /* red     */
+     [10] = "#50fa7b", /* green   */
+     [11] = "#f1fa8c", /* yellow  */
+     [12] = "#bd93f9", /* blue    */
+     [13] = "#ff79c6", /* magenta */
+     [14] = "#8be9fd", /* cyan    */
+     [15] = "#ffffff", /* white   */
+   
+        /* special colors */
+     [256] = "#282a36", /* background */
+     [257] = "#f8f8f2", /* foreground */
 };
+
 
 /*
  * Default colors (colorname index)
@@ -131,12 +134,15 @@ static unsigned int defaultcs = 257;
 static unsigned int defaultrcs = 257;
 
 /*
- * Colors used, when the specific fg == defaultfg. So in reverse mode this
- * will reverse too. Another logic would only make the simple feature too
- * complex.
- */
+* Colors used, when the specific fg == defaultfg. So in reverse mode this
+* will reverse too. Another logic would only make the simple feature too
+* complex.
+*/
 unsigned int defaultitalic = 7;
 unsigned int defaultunderline = 7;
+    
+
+
 /*
  * Default shape of cursor
  * 2: Block ("█")
@@ -150,8 +156,8 @@ static unsigned int cursorshape = 2;
  * Default columns and rows numbers
  */
 
-static unsigned int cols = 80;
-static unsigned int rows = 24;
+static unsigned int cols = 120;
+static unsigned int rows = 40;
 
 /*
  * Default colour and shape of the mouse cursor
